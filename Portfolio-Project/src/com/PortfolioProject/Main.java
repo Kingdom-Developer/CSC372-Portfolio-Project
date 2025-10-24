@@ -6,6 +6,7 @@ import java.util.ListIterator;
 import java.util.Scanner;
 
 public class Main {
+    // Create static Scanner object
     public static Scanner scnr = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -19,13 +20,6 @@ public class Main {
         String userInputName;
         String userInputAddress;
         double userInputGpa;
-
-        // Test code to confirm functionality of Student class and LinkedList
-//        Student stu1 = new Student("Nolan", "123 Main St.", 3.4);
-//        Student stu2 = new Student("James", "321 West St.", 3.6);
-//        studentList.add(stu1);
-//        studentList.add(stu2);
-
 
         // Prompt user for selection
         System.out.print("Press \"q\" to quit or enter any other value to add student to the list: ");
@@ -54,9 +48,7 @@ public class Main {
         // While loop to iterate through LinkedList of students
         while (listIterator.hasNext()) {
             student = listIterator.next();
-            System.out.println("Student Name: " + student.getName() + "\n" +
-                               "Student Address: " + student.getAddress() + "\n" +
-                               "Student GPA: " + student.getGpa() + "\n");
+            System.out.println(student.toString() + "\n");
         }
     }
 

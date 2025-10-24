@@ -15,6 +15,12 @@ public class Student {
         this.Gpa = Gpa;
     }
 
+    // Override toString method to format student information
+    @Override
+    public String toString() {
+        return "Name: " + this.name + "\n" + "Address: " + this.address + "\n" + "GPA: " + this.Gpa;
+    }
+
     // Getter and setter methods for name
     public String getName() {
         return name;
