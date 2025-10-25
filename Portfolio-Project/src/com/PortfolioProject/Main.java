@@ -1,6 +1,5 @@
 package com.PortfolioProject;
 import java.util.*;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Initialize LinkedList
-        List<Student> studentList = new LinkedList<Student>();
+        List<Student> studentList = new LinkedList<>();
         // Declare ListIterator for studentList
         ListIterator<Student> listIterator;
         // Declare variables to be used
@@ -54,16 +53,24 @@ public class Main {
             // Store next Student object to temporary variable
             student = listIterator.next();
 
-            // Declare the path for the file to be written to
-            Path targetPath = Path.of("").toAbsolutePath();
-
             // Try-catch block to try writing dateTimeField to log.txt and handle exceptions
             try {
                 Files.writeString(Path.of("student_list.txt"), student.toString() + "\n \n", StandardOpenOption.CREATE, StandardOpenOption.APPEND);
             } catch (IOException e) {
-                // Alert message to indicate if an error occurred while attempting to write to file
-                System.out.println(e.getMessage());
+                // Print message to indicate if an error occurred while attempting to write to file
+                System.out.println("Error writing to file: " + e.getMessage());
+
+                // Return to avoid last section of code from executing
+                return;
             }
+        }
+
+        // Determine which feedback statement to use
+        if (studentList.isEmpty()) {
+            System.out.println("Goodbye!");
+        }
+        else {
+            System.out.println("Successfully wrote students' information to file. Goodbye!");
         }
     }
 
@@ -101,6 +108,18 @@ public class Main {
 
     // Method to retrieve valid user string
     public static String getUserString() {
-        return scnr.nextLine();
+        // Variable to hold user input
+        String input;
+
+        // Keep prompting user for input if their input is empty
+        while (true) {
+            input = scnr.nextLine();
+
+            // Check if user input is empty
+            if (!input.trim().isEmpty()) {
+                return input;
+            }
+            System.out.print("Field cannot be empty, please try again: ");
+        }
     }
 }
