@@ -23,7 +23,7 @@ public class Student {
 
     // Getter and setter methods for name
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -32,7 +32,7 @@ public class Student {
 
     // Getter and setter methods for address
     public String getAddress() {
-        return address;
+        return this.address;
     }
 
     public void setAddress(String address) {
@@ -41,10 +41,10 @@ public class Student {
 
     // Getter and setter methods for GPA
     public double getGpa() {
-        return Gpa;
+        return this.Gpa;
     }
 
     public void setGpa(double gpa) {
-        Gpa = gpa;
+        this.Gpa = gpa;
     }
 }
