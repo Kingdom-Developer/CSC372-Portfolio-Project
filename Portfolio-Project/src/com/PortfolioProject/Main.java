@@ -98,7 +98,7 @@ public class Main {
 
         // Validate that user input is between 0.0 and 4.0
         while (gpaValue < 0.0 || gpaValue > 4.0) {
-            System.out.println("GPA is out of range, please enter a value between 0.0 and 4.0: ");
+            System.out.print("GPA is out of range, please enter a value between 0.0 and 4.0: ");
             while (!scnr.hasNextDouble()) {
                 System.out.print("Incorrect entry, please try again: ");
                 scnr.next();
