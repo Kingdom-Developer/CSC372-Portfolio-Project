@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
-// Main class of program to store student info from user to a list and print to a text file
+// Main class of program to store student info from user to a LinkedList and print to a text file
 public class Main {
     // Create static Scanner object
     public static Scanner scnr = new Scanner(System.in);
@@ -13,17 +13,20 @@ public class Main {
     public static void main(String[] args) {
         // Initialize LinkedList
         List<Student> studentList = new LinkedList<>();
+
         // Declare ListIterator for studentList
         ListIterator<Student> listIterator;
-        // Declare variables to be used
-        Student student;
+
+        // Declare variables to be used in program
+        String selectionMessage = "Press \"q\" to quit or enter any other value to add student to the list: ";
         String userSelection;
         String userInputName;
         String userInputAddress;
         double userInputGpa;
+        Student student;
 
-        // Prompt user for selection
-        System.out.print("Press \"q\" to quit or enter any other value to add student to the list: ");
+        // Prompt user for selection and store input to variable
+        System.out.print(selectionMessage);
         userSelection = getUserString();
 
         // While loop to retrieve userSelection
@@ -35,15 +38,15 @@ public class Main {
             userInputAddress = getUserString();
             userInputGpa = getUserGpa();
 
-            // Create and add new student to the studentList
+            // Create and add new student to studentList
             studentList.add(new Student(userInputName, userInputAddress, userInputGpa));
 
             // Reprompt user for selection
-            System.out.print("Press \"q\" to quit or enter any other value to add student to the list: ");
+            System.out.print(selectionMessage);
             userSelection = getUserString();
         }
 
-        // Sort in studentList by name in ascending order using a NameComparator object
+        // Sort studentList by name in ascending order using a NameComparator object
         studentList.sort(new NameComparator());
 
         // Initialize ListIterator for studentList
@@ -54,7 +57,7 @@ public class Main {
             // Store next Student object to temporary variable
             student = listIterator.next();
 
-            // Try-catch block to try writing dateTimeField to log.txt and handle exceptions
+            // Try-catch block to try writing students' information to text file and handle exceptions
             try {
                 Files.writeString(Path.of("student_list.txt"), student.toString() + "\n \n", StandardOpenOption.CREATE, StandardOpenOption.APPEND);
             } catch (IOException e) {
@@ -82,6 +85,7 @@ public class Main {
 
         // Prompt User for input
         System.out.print("Please enter a GPA between 0.0 and 4.0: ");
+        // Keep checking for user double till received
         while (!scnr.hasNextDouble()) {
             System.out.print("Incorrect entry, please try again: ");
             // Clear invalid input
@@ -103,7 +107,7 @@ public class Main {
             scnr.nextLine();
         }
 
-        // Return valid double
+        // Return valid GPA
         return gpaValue;
     }
 
