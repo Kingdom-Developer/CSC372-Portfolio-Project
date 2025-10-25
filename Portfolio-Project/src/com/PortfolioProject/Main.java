@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
+// Main class of program to store student info from user to a list and print to a text file
 public class Main {
     // Create static Scanner object
     public static Scanner scnr = new Scanner(System.in);
