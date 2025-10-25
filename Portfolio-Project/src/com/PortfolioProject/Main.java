@@ -1,9 +1,6 @@
 package com.PortfolioProject;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     // Create static Scanner object
@@ -41,6 +38,9 @@ public class Main {
             System.out.print("Press \"q\" to quit or enter any other value to add student to the list: ");
             userSelection = getUserString();
         }
+
+        // Sort in studentList by name in ascending order using a NameComparator object
+        studentList.sort(new NameComparator());
 
         // Initialize ListIterator for studentList
         listIterator = studentList.listIterator();
