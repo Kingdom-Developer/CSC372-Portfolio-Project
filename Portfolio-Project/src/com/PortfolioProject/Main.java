@@ -1,6 +1,10 @@
 package com.PortfolioProject;
-
 import java.util.*;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 
 public class Main {
     // Create static Scanner object
@@ -47,8 +51,19 @@ public class Main {
 
         // While loop to iterate through LinkedList of students
         while (listIterator.hasNext()) {
+            // Store next Student object to temporary variable
             student = listIterator.next();
-            System.out.println(student.toString() + "\n");
+
+            // Declare the path for the file to be written to
+            Path targetPath = Path.of("").toAbsolutePath();
+
+            // Try-catch block to try writing dateTimeField to log.txt and handle exceptions
+            try {
+                Files.writeString(Path.of("student_list.txt"), student.toString() + "\n \n", StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            } catch (IOException e) {
+                // Alert message to indicate if an error occurred while attempting to write to file
+                System.out.println(e.getMessage());
+            }
         }
     }
 
